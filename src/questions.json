@@ -1,0 +1,205 @@
+{
+  "questions": [
+    {
+      "question_type": "categorical",
+      "feature": "HighBP",
+      "question": "Have you ever been told by a doctor, nurse, or other health professional that you have high blood pressure?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "HighChol",
+      "question": "Have you ever been told by a doctor, nurse, or other health professional that your blood cholesterol is high?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "CholCheck",
+      "question": "Have you had your cholesterol checked within the past five years?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    { 
+      "question_type": "numeric",
+      "feature": "BMI",
+      "question": "What is your Body Mass Index (BMI)?",
+      "options": [
+        "Underweight (<18.5)",
+        "Normal Weight (18.5 - 24.9)",
+        "Overweight (25 - 29.9)",
+        "Obese (30+)"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "Smoker",
+      "question": "Have you smoked at least 100 cigarettes in your entire life? (Note: 5 packs = 100 cigarettes)",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "Stroke",
+      "question": "Have you ever been told that you had a stroke?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "HeartDiseaseorAttack",
+      "question": "Have you ever been diagnosed with coronary heart disease (CHD) or myocardial infarction (MI)?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "PhysActivity",
+      "question": "Have you engaged in any physical activity or exercise during the past 30 days other than your regular job?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "Fruits",
+      "question": "Do you consume fruits 1 or more times per day?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "Veggies",
+      "question": "Do you consume vegetables 1 or more times per day?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "HvyAlcoholConsump",
+      "question": "Are you a heavy drinker? (Adult men having more than 14 drinks per week and adult women having more than 7 drinks per week)",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "AnyHealthcare",
+      "question": "Do you have any kind of health care coverage, including health insurance, prepaid plans such as HMOs, or government plans such as Medicare, or Indian Health Service?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "NoDocbcCost",
+      "question": "Was there a time in the past 12 months when you needed to see a doctor but could not because of cost?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question_type": "numeric",
+      "feature": "GenHlth",
+      "question": "Would you say that in general your health is: rate (1 ~ 5)",
+      "options": [
+        "Excellent (5)",
+        "Very Good (4)",
+        "Good (3)",
+        "Fair (2)",
+        "Poor (1)"
+      ]
+    },
+    {
+      "question_type": "numeric",
+      "feature": "MentHlth",
+      "question": "Now thinking about your mental health, which includes stress, depression, and problems with emotions, for how many days during the past 30 days was your mental health not good? (0 ~ 30)",
+      "options": [
+        "0 days",
+        "1-5 days",
+        "6-10 days",
+        "11-20 days",
+        "21-30 days"
+      ]
+    },
+    {
+      "question_type": "numeric",
+      "feature": "PhysHlth",
+      "question": "Now thinking about your physical health, which includes physical illness and injury, for how many days during the past 30 days was your physical health not good? (0 ~ 30)",
+      "options": [
+        "0 days",
+        "1-5 days",
+        "6-10 days",
+        "11-20 days",
+        "21-30 days"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "DiffWalk",
+      "question": "Do you have serious difficulty walking or climbing stairs?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "Sex",
+      "question": "Indicate sex of respondent (0,1) (Female or Male)",
+      "options": [
+        "Female",
+        "Male"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "Age",
+      "question": "Fourteen-level age category (1 ~ 14)",
+      "options": [
+        "18-24 years",
+        "25-34 years",
+        "35-44 years",
+        "45-54 years",
+        "55-64 years",
+        "65-74 years",
+        "75-84 years",
+        "85+ years",
+        "Prefer not to answer"
+      ]
+    },
+    {
+      "question_type": "categorical",
+      "feature": "Education",
+      "question": "What is the highest grade or year of school you completed? (1 ~ 6)",
+      "options": [
+        "Less than high school",
+        "High school graduate (includes GED)",
+        "Some college",
+        "College graduate",
+        "Postgraduate studies"
+      ]
+    }
+  ]
+}
