@@ -11,7 +11,9 @@ const RecipeStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: false,
+        headerTitle: "",
+        headerTransparent: true,
+        headerTintColor: "#2D0C57",
       }}
     >
       <Stack.Screen name="RecipesScreen" component={Recipes} />
