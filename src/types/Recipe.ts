@@ -1,10 +1,16 @@
 export interface Recipe {
-  id: string;
+  id: number;
   title: string;
-  imageUrl: string;
-  calorie: string;
-  description: string;
-  fat: string;
+  readyInMinutes: number;
+  image: string;
+  dishTypes: string;
+  instructions: string;
+  vegan: boolean;
+  vegetarian: boolean;
+  dairyFree: boolean;
+  glutenFree: boolean;
+  calories: number;
   protein: string;
-  carbo: string;
+  fat: string;
+  carbs: string;
 }

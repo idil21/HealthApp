@@ -1,5 +1,5 @@
-import type { Recipe } from "../../types";
+import type { Ingredient } from "../../types";
 
 export interface IngredientCardProps {
-  recipeData: Recipe;
+  ingredientData: Ingredient;
 }

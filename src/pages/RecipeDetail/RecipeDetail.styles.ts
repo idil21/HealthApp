@@ -14,6 +14,8 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     padding: 20,
+    marginTop: 20,
+    marginBottom: 20,
     borderRadius: 10,
     backgroundColor: "white",
     shadowColor: "#000000",

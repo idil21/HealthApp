@@ -6,13 +6,22 @@ import {
   View,
   FlatList,
   ListRenderItem,
+  ActivityIndicator,
 } from "react-native";
-import recipeData from "../../recipe-data.json";
 import { RecipeCard, SearchBar } from "../../components";
 import { Recipe } from "../../types";
 import styles from "./Recipes.styles";
+import axios from "axios";
+import { useGetRecipesQuery } from "../../redux/api";
 
 function Recipes({ navigation }) {
+  const {
+    data: recipeData,
+    isLoading,
+    isError,
+    refetch,
+  } = useGetRecipesQuery({ page: 0 });
+
   const handleOnRecipeSelect = (recipe: Recipe) => {
     navigation.navigate("RecipeDetailScreen", { recipe });
   };
@@ -21,6 +30,7 @@ function Recipes({ navigation }) {
   );
 
   const handleSearch = (text) => {};
+
   return (
     <View style={styles.container}>
       <View style={styles.upperView}>
@@ -29,7 +39,7 @@ function Recipes({ navigation }) {
       </View>
       <View style={styles.buttomView}>
         <FlatList
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
           data={recipeData}
           renderItem={renderRecipe}
           ItemSeparatorComponent={() => <View style={styles.separator} />}

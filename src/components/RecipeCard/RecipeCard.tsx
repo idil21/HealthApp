@@ -4,7 +4,7 @@ import styles from "./RecipeCard.styles";
 import type { RecipeCardProps } from "./RecipeCard.types";
 
 const RecipeCard = ({ recipeData, onSelect }: RecipeCardProps) => {
-  const { title, imageUrl, calorie } = recipeData;
+  const { title, image, calories } = recipeData;
   const handleOnSelect = () => {
     onSelect(recipeData);
   };
@@ -13,9 +13,9 @@ const RecipeCard = ({ recipeData, onSelect }: RecipeCardProps) => {
       <View style={styles.container}>
         <View style={styles.inner_container}>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.kalori}>{calorie}</Text>
+          <Text style={styles.kalori}>{calories}KCAL</Text>
         </View>
-        <Image style={styles.image} source={{ uri: imageUrl }} />
+        <Image style={styles.image} source={{ uri: image }} />
       </View>
     </TouchableOpacity>
   );

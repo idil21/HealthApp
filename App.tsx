@@ -8,10 +8,15 @@ import {
   StatusBar,
   Dimensions,
 } from "react-native";
+import Provider from "./src/redux/Provider";
 import AppNavigator from "./src/router/AppNavigator";
 
 function App() {
-  return <AppNavigator />;
+  return (
+    <Provider>
+      <AppNavigator />
+    </Provider>
+  );
 }
 
 export default App;

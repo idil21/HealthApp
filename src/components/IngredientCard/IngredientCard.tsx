@@ -3,13 +3,16 @@ import { View, Text, Image } from "react-native";
 import { IngredientCardProps } from "./IngredientCard.types";
 import styles from "./IngredientCard.style";
 
-const IngredientCard = ({ recipeData }: IngredientCardProps) => {
-  const { title, imageUrl } = recipeData;
+const IngredientCard = ({ ingredientData }: IngredientCardProps) => {
+  const { name, image, amount, unit } = ingredientData;
 
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={{ uri: imageUrl }} />
-      <Text style={styles.title}>{title}</Text>
+      <View style={styles.image_container}>
+        <Image style={styles.image} source={{ uri: image }} />
+      </View>
+      <Text style={styles.title}>{name}</Text>
+      <Text style={styles.amount}>{`${amount} ${unit}`}</Text>
     </View>
   );
 };
