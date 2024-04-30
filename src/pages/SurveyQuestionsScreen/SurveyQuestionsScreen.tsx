@@ -13,34 +13,32 @@ import LoginButton from "../../components/LoginButton";
 import Icons2 from "react-native-vector-icons/Octicons";
 import styles from "./SurveyQuestionsScreen.styles";
 
-import Icons from "react-native-vector-icons/SimpleLineIcons";
-const SurveyQuestionsScreen = ({
-  route,
-  navigation,
-}: {
-  route: any;
-  navigation: any;
-}) => {
-  //change it all any
+import { usePostSurveyResponseMutation } from "../../redux/api";
+import { SurveyResponse } from "../../types";
 
+const SurveyQuestionsScreen = ({ route, navigation }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userResponses, setUserResponses] = useState(
-    Array(route.params.questions.length).fill("")
-  );
+  const [userResponses, setUserResponses] = useState<SurveyResponse>();
   const surveyQuestions = route.params.questions;
 
+  const [postSurveyResponse, { isLoading, isError }] =
+    usePostSurveyResponseMutation();
+
   const handleAnswerSubmit = (selectedOptionIndex: number) => {
-    const selectedOption =
-      surveyQuestions[currentQuestionIndex]["options"][selectedOptionIndex];
-    const updatedResponses = [...userResponses];
-    updatedResponses[currentQuestionIndex] = selectedOption;
+    const surveyFeature = surveyQuestions[currentQuestionIndex].feature;
+
+    const updatedResponses = {
+      ...userResponses,
+      [surveyFeature]: selectedOptionIndex,
+    };
+
     setUserResponses(updatedResponses);
 
     if (currentQuestionIndex < surveyQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
       console.log("All Responses:", updatedResponses);
-      //sendResponsesToBackend(userResponses);
+      postSurveyResponse(updatedResponses);
       navigation.navigate("SurveyResult");
     }
   };

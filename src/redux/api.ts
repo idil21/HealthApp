@@ -1,9 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type {
-  RecipeIngredientsResponseType,
-  RecipeResponseType,
-} from "./types";
-import { Ingredient } from "../types";
+import type { RecipeResponseType } from "./types";
+import { Ingredient, SurveyResponse } from "../types";
 
 const URL = "http://127.0.0.1:8080";
 
@@ -24,7 +21,21 @@ export const api = createApi({
     getIngredientsByRecipeId: builder.query<Ingredient[], number>({
       query: (recipeId) => `/recipeIngredients/${recipeId}`,
     }),
+    postSurveyResponse: builder.mutation<void, SurveyResponse>({
+      query: (surveyResponse) => ({
+        url: "/surveyResponse",
+        method: "POST",
+        body: JSON.stringify(surveyResponse),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }),
+    }),
   }),
 });
 
-export const { useGetRecipesQuery, useGetIngredientsByRecipeIdQuery } = api;
+export const {
+  useGetRecipesQuery,
+  useGetIngredientsByRecipeIdQuery,
+  usePostSurveyResponseMutation,
+} = api;

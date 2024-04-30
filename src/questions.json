@@ -2,34 +2,25 @@
   "questions": [
     {
       "question_type": "categorical",
-      "feature": "HighBP",
+      "feature": "highBP",
       "question": "Have you ever been told by a doctor, nurse, or other health professional that you have high blood pressure?",
-      "options": [
-        "Yes",
-        "No"
-      ]
+      "options": ["Yes", "No"]
     },
     {
       "question_type": "categorical",
-      "feature": "HighChol",
+      "feature": "highChol",
       "question": "Have you ever been told by a doctor, nurse, or other health professional that your blood cholesterol is high?",
-      "options": [
-        "Yes",
-        "No"
-      ]
+      "options": ["Yes", "No"]
     },
     {
       "question_type": "categorical",
-      "feature": "CholCheck",
+      "feature": "cholCheck",
       "question": "Have you had your cholesterol checked within the past five years?",
-      "options": [
-        "Yes",
-        "No"
-      ]
+      "options": ["Yes", "No"]
     },
-    { 
+    {
       "question_type": "numeric",
-      "feature": "BMI",
+      "feature": "bmi",
       "question": "What is your Body Mass Index (BMI)?",
       "options": [
         "Underweight (<18.5)",
@@ -40,88 +31,61 @@
     },
     {
       "question_type": "categorical",
-      "feature": "Smoker",
+      "feature": "smoker",
       "question": "Have you smoked at least 100 cigarettes in your entire life? (Note: 5 packs = 100 cigarettes)",
-      "options": [
-        "Yes",
-        "No"
-      ]
+      "options": ["Yes", "No"]
     },
     {
       "question_type": "categorical",
-      "feature": "Stroke",
+      "feature": "stroke",
       "question": "Have you ever been told that you had a stroke?",
-      "options": [
-        "Yes",
-        "No"
-      ]
+      "options": ["Yes", "No"]
     },
     {
       "question_type": "categorical",
-      "feature": "HeartDiseaseorAttack",
+      "feature": "heartDiseaseOrAttack",
       "question": "Have you ever been diagnosed with coronary heart disease (CHD) or myocardial infarction (MI)?",
-      "options": [
-        "Yes",
-        "No"
-      ]
+      "options": ["Yes", "No"]
     },
     {
       "question_type": "categorical",
-      "feature": "PhysActivity",
+      "feature": "physActivity",
       "question": "Have you engaged in any physical activity or exercise during the past 30 days other than your regular job?",
-      "options": [
-        "Yes",
-        "No"
-      ]
+      "options": ["Yes", "No"]
     },
     {
       "question_type": "categorical",
-      "feature": "Fruits",
+      "feature": "fruits",
       "question": "Do you consume fruits 1 or more times per day?",
-      "options": [
-        "Yes",
-        "No"
-      ]
+      "options": ["Yes", "No"]
     },
     {
       "question_type": "categorical",
-      "feature": "Veggies",
+      "feature": "veggies",
       "question": "Do you consume vegetables 1 or more times per day?",
-      "options": [
-        "Yes",
-        "No"
-      ]
+      "options": ["Yes", "No"]
     },
     {
       "question_type": "categorical",
-      "feature": "HvyAlcoholConsump",
+      "feature": "hvyAlcoholConsump",
       "question": "Are you a heavy drinker? (Adult men having more than 14 drinks per week and adult women having more than 7 drinks per week)",
-      "options": [
-        "Yes",
-        "No"
-      ]
+      "options": ["Yes", "No"]
     },
     {
       "question_type": "categorical",
-      "feature": "AnyHealthcare",
+      "feature": "anyHealthcare",
       "question": "Do you have any kind of health care coverage, including health insurance, prepaid plans such as HMOs, or government plans such as Medicare, or Indian Health Service?",
-      "options": [
-        "Yes",
-        "No"
-      ]
+      "options": ["Yes", "No"]
     },
     {
       "question_type": "categorical",
-      "feature": "NoDocbcCost",
+      "feature": "noDocBcCost",
       "question": "Was there a time in the past 12 months when you needed to see a doctor but could not because of cost?",
-      "options": [
-        "Yes",
-        "No"
-      ]
+      "options": ["Yes", "No"]
     },
     {
       "question_type": "numeric",
-      "feature": "GenHlth",
+      "feature": "genHlth",
       "question": "Would you say that in general your health is: rate (1 ~ 5)",
       "options": [
         "Excellent (5)",
@@ -133,49 +97,31 @@
     },
     {
       "question_type": "numeric",
-      "feature": "MentHlth",
+      "feature": "mentHlth",
       "question": "Now thinking about your mental health, which includes stress, depression, and problems with emotions, for how many days during the past 30 days was your mental health not good? (0 ~ 30)",
-      "options": [
-        "0 days",
-        "1-5 days",
-        "6-10 days",
-        "11-20 days",
-        "21-30 days"
-      ]
+      "options": ["0 days", "1-5 days", "6-10 days", "11-20 days", "21-30 days"]
     },
     {
       "question_type": "numeric",
-      "feature": "PhysHlth",
+      "feature": "physHlth",
       "question": "Now thinking about your physical health, which includes physical illness and injury, for how many days during the past 30 days was your physical health not good? (0 ~ 30)",
-      "options": [
-        "0 days",
-        "1-5 days",
-        "6-10 days",
-        "11-20 days",
-        "21-30 days"
-      ]
+      "options": ["0 days", "1-5 days", "6-10 days", "11-20 days", "21-30 days"]
     },
     {
       "question_type": "categorical",
-      "feature": "DiffWalk",
+      "feature": "diffWalk",
       "question": "Do you have serious difficulty walking or climbing stairs?",
-      "options": [
-        "Yes",
-        "No"
-      ]
+      "options": ["Yes", "No"]
     },
     {
       "question_type": "categorical",
-      "feature": "Sex",
+      "feature": "sex",
       "question": "Indicate sex of respondent (0,1) (Female or Male)",
-      "options": [
-        "Female",
-        "Male"
-      ]
+      "options": ["Female", "Male"]
     },
     {
       "question_type": "categorical",
-      "feature": "Age",
+      "feature": "age",
       "question": "Fourteen-level age category (1 ~ 14)",
       "options": [
         "18-24 years",
@@ -191,7 +137,7 @@
     },
     {
       "question_type": "categorical",
-      "feature": "Education",
+      "feature": "education",
       "question": "What is the highest grade or year of school you completed? (1 ~ 6)",
       "options": [
         "Less than high school",
