@@ -1,8 +1,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { RecipeResponseType } from "./types";
-import { Ingredient, SurveyResponse } from "../types";
+import { Ingredient, SurveyResponse, Recipe } from "../types";
+import { createEntityAdapter } from "@reduxjs/toolkit";
 
 const URL = "http://127.0.0.1:8080";
+
+const itemsAdapter = createEntityAdapter({
+  selectId: (item: Recipe) => item.id,
+});
+
+const itemsSelector = itemsAdapter.getSelectors();
 
 export const api = createApi({
   reducerPath: "api",
@@ -16,7 +23,25 @@ export const api = createApi({
         url: "/recipe",
         params: { page, text: queryText, size, sort },
       }),
-      transformResponse: (response: RecipeResponseType) => response.content,
+      transformResponse: (response: RecipeResponseType) => {
+        return itemsAdapter.addMany(
+          itemsAdapter.getInitialState(),
+          response.content
+        );
+      },
+      forceRefetch: ({ currentArg, previousArg }) => {
+        return currentArg?.page !== previousArg?.page;
+      },
+      serializeQueryArgs: ({ endpointName, queryArgs }) => {
+        //return `${endpointName}-${queryArgs?.queryText}-${queryArgs?.size}-${queryArgs?.sort}`;
+        return endpointName;
+      },
+      merge: (currentState, incomingState) => {
+        itemsAdapter.addMany(
+          currentState,
+          itemsSelector.selectAll(incomingState)
+        );
+      },
     }),
     getIngredientsByRecipeId: builder.query<Ingredient[], number>({
       query: (recipeId) => `/recipeIngredients/${recipeId}`,
@@ -39,3 +64,7 @@ export const {
   useGetIngredientsByRecipeIdQuery,
   usePostSurveyResponseMutation,
 } = api;
+
+export { itemsSelector, itemsAdapter };
+
+export default api;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -11,16 +11,28 @@ import {
 import { RecipeCard, SearchBar } from "../../components";
 import { Recipe } from "../../types";
 import styles from "./Recipes.styles";
-import axios from "axios";
-import { useGetRecipesQuery } from "../../redux/api";
+import {
+  useGetRecipesQuery,
+  itemsAdapter,
+  itemsSelector,
+} from "../../redux/api";
 
 function Recipes({ navigation }) {
+  const [currentPage, setCurrentPage] = useState(0);
   const {
     data: recipeData,
     isLoading,
     isError,
     refetch,
-  } = useGetRecipesQuery({ page: 0 });
+  } = useGetRecipesQuery(
+    { page: currentPage },
+    {
+      selectFromResult: ({ data, ...otherParams }) => ({
+        data: itemsSelector.selectAll(data ?? itemsAdapter.getInitialState()),
+        ...otherParams,
+      }),
+    }
+  );
 
   const handleOnRecipeSelect = (recipe: Recipe) => {
     navigation.navigate("RecipeDetailScreen", { recipe });
@@ -44,6 +56,9 @@ function Recipes({ navigation }) {
           renderItem={renderRecipe}
           ItemSeparatorComponent={() => <View style={styles.separator} />}
           showsVerticalScrollIndicator={false}
+          onEndReached={() => {
+            setCurrentPage(currentPage + 1);
+          }}
         />
       </View>
     </View>
