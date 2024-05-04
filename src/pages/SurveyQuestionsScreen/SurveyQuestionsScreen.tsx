@@ -52,7 +52,6 @@ const SurveyQuestionsScreen = ({ route, navigation }) => {
       >
         <Icons2 name="dot" size={24} color="black" />
         <Text style={styles.optionText}>{option}</Text>
-        <Text style={styles.optionText}>{index}</Text>
       </TouchableOpacity>
     ));
   };
