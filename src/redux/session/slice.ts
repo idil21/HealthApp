@@ -2,16 +2,32 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "../../types";
 import { api } from "../api";
 
-const initialState = {
+interface AuthState {
+  userInfo: User | null;
+  sessionPending: boolean;
+  isAuthenticated: boolean;
+}
+
+const initialState: AuthState = {
   sessionPending: false,
   isAuthenticated: false,
-  errorMessage: "",
+  userInfo: null,
 };
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.userInfo = null;
+      state.isAuthenticated = false;
+      state.sessionPending = false;
+    },
+    setCredentials: (state, action: PayloadAction<User>) => {
+      state.userInfo = action.payload;
+      console.log("state UserInfo:", state.userInfo.name);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addMatcher(api.endpoints.postLogin.matchPending, (state, action) => {
@@ -28,5 +44,7 @@ export const authSlice = createSlice({
       });
   },
 });
+
+export const { logout, setCredentials } = authSlice.actions;
 
 export default authSlice.reducer;

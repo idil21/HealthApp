@@ -8,6 +8,7 @@ import {
   Recipes,
   RecipeDetail,
   SignUpScreen,
+  Home,
   SurveyHomeScreen,
   SurveyQuestionsScreen,
   SurveyResult,
@@ -41,6 +42,7 @@ const SurveyStack = () => {
         headerTintColor: "#2D0C57",
       }}
     >
+      <Stack.Screen name="Home2" component={Home} />
       <Stack.Screen name="SurveyHome" component={SurveyHomeScreen} />
       <Stack.Screen
         name="SurveyQuestionsScreen"

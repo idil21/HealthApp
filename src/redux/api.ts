@@ -3,6 +3,7 @@ import type {
   RecipeResponseType,
   AuthRequestType,
   LoginResponseType,
+  UserDetailsResponseType,
 } from "./types";
 import { Ingredient, SurveyResponse, Recipe, User } from "../types";
 import { createEntityAdapter } from "@reduxjs/toolkit";
@@ -22,6 +23,7 @@ export const api = createApi({
     baseUrl: URL,
     prepareHeaders: async (headers, { getState }) => {
       const token = await AsyncStorage.getItem("token");
+
       if (token !== null && token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
@@ -77,15 +79,22 @@ export const api = createApi({
           password,
         },
       }),
-
       onQueryStarted: async (arg, { queryFulfilled }) => {
         try {
+          await AsyncStorage.removeItem("token");
           const { data } = await queryFulfilled;
-          console.log("yeto", data.result);
+
           AsyncStorage.setItem("token", data.result);
         } catch (error) {
           console.error("Error during login:", error);
         }
+      },
+    }),
+    getUserDetails: builder.query<User, void>({
+      query: () => "/user/details",
+      transformResponse: (response: UserDetailsResponseType) => {
+        console.log("result =", response.result);
+        return response.result;
       },
     }),
   }),
@@ -96,6 +105,7 @@ export const {
   useGetIngredientsByRecipeIdQuery,
   usePostSurveyResponseMutation,
   usePostLoginMutation,
+  useGetUserDetailsQuery,
 } = api;
 
 export { itemsSelector, itemsAdapter };
