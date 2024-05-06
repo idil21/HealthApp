@@ -1,4 +1,5 @@
 export interface SurveyResponse {
+  userId: number;
   highBP: number;
   highChol: number;
   cholCheck: number;

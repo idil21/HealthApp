@@ -9,6 +9,10 @@ function Home({ navigation }) {
   const { data: userInfo, isLoading, isError } = useGetUserDetailsQuery();
   const dispatch = useDispatch<AppDispatch>();
 
+  const handleSurveyButtonClick = () => {
+    navigation.navigate("SurveyHome");
+  };
+
   useEffect(() => {
     if (userInfo) {
       dispatch(setCredentials(userInfo));
@@ -20,7 +24,8 @@ function Home({ navigation }) {
   }
   return (
     <SafeAreaView>
-      <Text>{userInfo.name}</Text>
+      <Text>Welcome, {userInfo.name}</Text>
+      <Button title="Take Survey" onPress={handleSurveyButtonClick} />
     </SafeAreaView>
   );
 }
