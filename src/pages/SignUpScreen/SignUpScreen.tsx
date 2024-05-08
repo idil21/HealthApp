@@ -46,7 +46,7 @@ const SignUpScreen = ({ navigation }: { navigation: any }) => {
     if (email.trim() !== '' && password.trim() !== '' && validateEmail(email)) {
       // Add your login logic here
       console.log(`Logging in with email: ${email} and password: ${password}`);
-      navigation.navigate('LoginScreen');
+      navigation.navigate('FormInfo');
     }
   
   };

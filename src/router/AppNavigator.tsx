@@ -12,6 +12,7 @@ import {
   SurveyHomeScreen,
   SurveyQuestionsScreen,
   SurveyResult,
+  FormInfo,
 } from "../pages";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -42,6 +43,7 @@ const SurveyStack = () => {
     >
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />
+      <Stack.Screen name="FormInfo" component={FormInfo} />
       <Stack.Screen name="SurveyHome" component={SurveyHomeScreen} />
       <Stack.Screen
         name="SurveyQuestionsScreen"
