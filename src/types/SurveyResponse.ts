@@ -20,4 +20,5 @@ export interface SurveyResponse {
   sex: number;
   age: number;
   education: number;
+  income: number;
 }

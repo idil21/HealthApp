@@ -35,7 +35,6 @@ const SurveyQuestionsScreen = ({ route, navigation }) => {
       ...userResponses,
       [surveyFeature]: value,
     };
-
     setUserResponses(updatedResponses);
 
     if (currentQuestionIndex < surveyQuestions.length - 1) {

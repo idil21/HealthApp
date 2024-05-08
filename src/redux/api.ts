@@ -44,17 +44,27 @@ export const api = createApi({
         );
       },
       forceRefetch: ({ currentArg, previousArg }) => {
-        return currentArg?.page !== previousArg?.page;
+        return (
+          currentArg?.page !== previousArg?.page ||
+          currentArg?.queryText !== previousArg?.queryText
+        );
       },
       serializeQueryArgs: ({ endpointName, queryArgs }) => {
         //return `${endpointName}-${queryArgs?.queryText}-${queryArgs?.size}-${queryArgs?.sort}`;
         return endpointName;
       },
-      merge: (currentState, incomingState) => {
-        itemsAdapter.addMany(
-          currentState,
-          itemsSelector.selectAll(incomingState)
-        );
+      merge: (currentState, incomingState, { arg: { page } }) => {
+        if (page === 0) {
+          return itemsAdapter.setAll(
+            currentState,
+            itemsSelector.selectAll(incomingState)
+          );
+        } else {
+          itemsAdapter.addMany(
+            currentState,
+            itemsSelector.selectAll(incomingState)
+          );
+        }
       },
     }),
     getIngredientsByRecipeId: builder.query<Ingredient[], number>({
