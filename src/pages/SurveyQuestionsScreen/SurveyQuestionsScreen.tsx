@@ -14,45 +14,50 @@ import Icons2 from "react-native-vector-icons/Octicons";
 import styles from "./SurveyQuestionsScreen.styles";
 
 import { usePostSurveyResponseMutation } from "../../redux/api";
+import { RootState } from "../../redux/store";
 import { SurveyResponse } from "../../types";
+import { useSelector } from "react-redux";
 
 const SurveyQuestionsScreen = ({ route, navigation }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userResponses, setUserResponses] = useState<SurveyResponse>();
   const surveyQuestions = route.params.questions;
 
+  const userId = useSelector((state: RootState) => state.auth.userInfo?.id);
+
   const [postSurveyResponse, { isLoading, isError }] =
     usePostSurveyResponseMutation();
 
-  const handleAnswerSubmit = (selectedOptionIndex: number) => {
+  const handleAnswerSubmit = (value: number) => {
     const surveyFeature = surveyQuestions[currentQuestionIndex].feature;
 
     const updatedResponses = {
       ...userResponses,
-      [surveyFeature]: selectedOptionIndex,
+      [surveyFeature]: value,
     };
-
     setUserResponses(updatedResponses);
 
     if (currentQuestionIndex < surveyQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
+      console.log("userId:  ", userId);
       console.log("All Responses:", updatedResponses);
-      postSurveyResponse(updatedResponses);
+      const surveyResponse = { userId, ...updatedResponses };
+      console.log("surveyResponse: ", surveyResponse);
+      postSurveyResponse(surveyResponse);
       navigation.navigate("SurveyResult");
     }
   };
   const renderOptions = () => {
     const options = surveyQuestions[currentQuestionIndex]["options"];
-    return options.map((option: string, index: number) => (
+    return options.map((option, index) => (
       <TouchableOpacity
         key={index}
         style={styles.optionButton}
-        onPress={() => handleAnswerSubmit(index)}
+        onPress={() => handleAnswerSubmit(option.value)}
       >
         <Icons2 name="dot" size={24} color="black" />
-        <Text style={styles.optionText}>{option}</Text>
-        <Text style={styles.optionText}>{index}</Text>
+        <Text style={styles.optionText}>{option.text}</Text>
       </TouchableOpacity>
     ));
   };

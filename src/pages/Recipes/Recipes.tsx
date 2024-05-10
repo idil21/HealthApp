@@ -19,13 +19,14 @@ import {
 
 function Recipes({ navigation }) {
   const [currentPage, setCurrentPage] = useState(0);
+  const [searchResult, setSearchResult] = useState("");
   const {
     data: recipeData,
     isLoading,
     isError,
     refetch,
   } = useGetRecipesQuery(
-    { page: currentPage },
+    { page: currentPage, queryText: searchResult },
     {
       selectFromResult: ({ data, ...otherParams }) => ({
         data: itemsSelector.selectAll(data ?? itemsAdapter.getInitialState()),
@@ -41,7 +42,10 @@ function Recipes({ navigation }) {
     <RecipeCard recipeData={item} onSelect={handleOnRecipeSelect} />
   );
 
-  const handleSearch = (text) => {};
+  const handleSearch = (text) => {
+    setSearchResult(text);
+    setCurrentPage(0);
+  };
 
   return (
     <View style={styles.container}>
