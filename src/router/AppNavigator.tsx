@@ -12,6 +12,7 @@ import {
   SurveyHomeScreen,
   SurveyQuestionsScreen,
   SurveyResult,
+  FormInfo,
 } from "../pages";
 import { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
@@ -42,6 +43,7 @@ const SurveyStack = () => {
         headerTintColor: "#2D0C57",
       }}
     >
+
       <Stack.Screen name="Home2" component={Home} />
       <Stack.Screen name="SurveyHome" component={SurveyHomeScreen} />
       <Stack.Screen
