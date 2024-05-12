@@ -7,6 +7,7 @@ import {
   FlatList,
   ListRenderItem,
   ActivityIndicator,
+  TouchableOpacity,
 } from "react-native";
 import { RecipeCard, SearchBar } from "../../components";
 import { Recipe } from "../../types";
@@ -17,16 +18,25 @@ import {
   itemsSelector,
 } from "../../redux/api";
 
+const dishTypes = ["breakfast", "lunch", "dinner", "dessert", "others"];
+
 function Recipes({ navigation }) {
-  const [currentPage, setCurrentPage] = useState(0);
-  const [searchResult, setSearchResult] = useState("");
+  const [searchParams, setSearchParams] = useState({
+    currentPage: 0,
+    searchResult: "",
+    dishType: "",
+  });
   const {
     data: recipeData,
     isLoading,
     isError,
     refetch,
   } = useGetRecipesQuery(
-    { page: currentPage, queryText: searchResult },
+    {
+      page: searchParams.currentPage,
+      queryText: searchParams.searchResult,
+      dishTypes: searchParams.dishType,
+    },
     {
       selectFromResult: ({ data, ...otherParams }) => ({
         data: itemsSelector.selectAll(data ?? itemsAdapter.getInitialState()),
@@ -42,28 +52,60 @@ function Recipes({ navigation }) {
     <RecipeCard recipeData={item} onSelect={handleOnRecipeSelect} />
   );
 
-  const handleSearch = (text) => {
-    setSearchResult(text);
-    setCurrentPage(0);
+  const handleOnSearch = (text) => {
+    setSearchParams({ currentPage: 0, searchResult: text, dishType: "" });
+  };
+
+  const handleOnFiltering = (type) => {
+    setSearchParams({ currentPage: 0, dishType: type, searchResult: "" });
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.upperView}>
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar onSearch={handleOnSearch} />
         <Text style={styles.title}>Discover Recipes</Text>
       </View>
       <View style={styles.buttomView}>
-        <FlatList
-          keyExtractor={(item) => item.id.toString()}
-          data={recipeData}
-          renderItem={renderRecipe}
-          ItemSeparatorComponent={() => <View style={styles.separator} />}
-          showsVerticalScrollIndicator={false}
-          onEndReached={() => {
-            setCurrentPage(currentPage + 1);
-          }}
-        />
+        <View>
+          <FlatList
+            horizontal
+            data={dishTypes}
+            keyExtractor={(item) => item}
+            renderItem={({ item: type }) => (
+              <TouchableOpacity
+                onPress={() => handleOnFiltering(type)}
+                style={{
+                  backgroundColor:
+                    searchParams.dishType === type ? "blue" : "gray",
+                  padding: 10,
+                  borderRadius: 20,
+                  marginHorizontal: 5,
+                }}
+              >
+                <Text style={{ color: "white" }}>{type}</Text>
+              </TouchableOpacity>
+            )}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+        <View>
+          <FlatList
+            keyExtractor={(item) => item.id.toString()}
+            data={recipeData}
+            renderItem={renderRecipe}
+            ItemSeparatorComponent={() => <View style={styles.separator} />}
+            showsVerticalScrollIndicator={false}
+            onEndReached={() => {
+              if (recipeData.length >= 10) {
+                setSearchParams((prev) => ({
+                  ...prev,
+                  currentPage: prev.currentPage + 1,
+                }));
+              }
+            }}
+          />
+        </View>
       </View>
     </View>
   );

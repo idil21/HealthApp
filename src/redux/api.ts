@@ -4,9 +4,10 @@ import type {
   AuthRequestType,
   LoginResponseType,
   UserDetailsResponseType,
+  RecipesRequestType,
 } from "./types";
 import { Ingredient, SurveyResponse, Recipe, User } from "../types";
-import { createEntityAdapter } from "@reduxjs/toolkit";
+import { EntityState, createEntityAdapter } from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const URL = "http://127.0.0.1:8080";
@@ -32,22 +33,30 @@ export const api = createApi({
   }),
 
   endpoints: (builder) => ({
-    getRecipes: builder.query({
-      query: ({ page = 0, queryText = "", size = 10, sort = "title" }) => ({
+    getRecipes: builder.query<EntityState<Recipe, number>, RecipesRequestType>({
+      query: (params = {}) => ({
         url: "/recipe",
-        params: { page, text: queryText, size, sort },
+        params: {
+          page: params.page || 0,
+          text: params.queryText || "",
+          size: params.size || 10,
+          sort: params.sort || "title",
+          vegan: params.vegan,
+          vegetarian: params.vegetarian,
+          dairyFree: params.dairyFree,
+          glutenFree: params.glutenFree,
+          dishTypes: params.dishTypes,
+        },
       }),
       transformResponse: (response: RecipeResponseType) => {
+        console.log(response.content);
         return itemsAdapter.addMany(
           itemsAdapter.getInitialState(),
           response.content
         );
       },
       forceRefetch: ({ currentArg, previousArg }) => {
-        return (
-          currentArg?.page !== previousArg?.page ||
-          currentArg?.queryText !== previousArg?.queryText
-        );
+        return currentArg !== previousArg;
       },
       serializeQueryArgs: ({ endpointName, queryArgs }) => {
         //return `${endpointName}-${queryArgs?.queryText}-${queryArgs?.size}-${queryArgs?.sort}`;

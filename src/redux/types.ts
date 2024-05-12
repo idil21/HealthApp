@@ -20,3 +20,15 @@ export interface UserDetailsResponseType {
   message: string;
   result: User;
 }
+
+export interface RecipesRequestType {
+  page?: number;
+  queryText?: string;
+  size?: number;
+  sort?: string;
+  vegan?: boolean;
+  vegetarian?: boolean;
+  dairyFree?: boolean;
+  glutenFree?: boolean;
+  dishTypes?: string;
+}
