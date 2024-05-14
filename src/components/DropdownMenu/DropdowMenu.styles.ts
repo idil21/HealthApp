@@ -26,27 +26,27 @@ export default StyleSheet.create({
   },
   dropdownButtonArrowStyle: {
     fontSize: 28,
-    color: 'rgb(136, 131, 240)',
+    color: "#8883f0",
   },
   dropdownButtonIconStyle: {
     fontSize: 28,
     marginRight: 8,
-    color: 'rgb(136, 131, 240)',
+    color: "#8883f0",
   },
 
   dropdownItemStyle: {
-    width: '100%',
-    flexDirection: 'row',
+    width: "100%",
+    flexDirection: "row",
     paddingHorizontal: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingVertical: 8,
   },
   dropdownItemTxtStyle: {
     flex: 1,
     fontSize: 18,
-    fontWeight: '500',
-    color: 'rgb(136, 131, 240)',
+    fontWeight: "500",
+    color: "#8883f0",
   },
   dropdownItemIconStyle: {
     fontSize: 28,

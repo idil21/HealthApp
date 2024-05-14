@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,7 +9,7 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from "react-native";
-import { RecipeCard, SearchBar } from "../../components";
+import { RecipeCard, SearchBar, FilterChip } from "../../components";
 import { Recipe } from "../../types";
 import styles from "./Recipes.styles";
 import {
@@ -52,6 +52,14 @@ function Recipes({ navigation }) {
     <RecipeCard recipeData={item} onSelect={handleOnRecipeSelect} />
   );
 
+  const renderFilterChip: ListRenderItem<string> = ({ item }) => (
+    <FilterChip
+      label={item}
+      isSelected={searchParams.dishType == item}
+      onPress={() => handleOnFiltering(item)}
+    />
+  );
+
   const handleOnSearch = (text) => {
     setSearchParams({ currentPage: 0, searchResult: text, dishType: "" });
   };
@@ -67,29 +75,16 @@ function Recipes({ navigation }) {
         <Text style={styles.title}>Discover Recipes</Text>
       </View>
       <View style={styles.buttomView}>
-        <View>
+        <View style={styles.innerContainer}>
           <FlatList
-            horizontal
             data={dishTypes}
+            renderItem={renderFilterChip}
             keyExtractor={(item) => item}
-            renderItem={({ item: type }) => (
-              <TouchableOpacity
-                onPress={() => handleOnFiltering(type)}
-                style={{
-                  backgroundColor:
-                    searchParams.dishType === type ? "blue" : "gray",
-                  padding: 10,
-                  borderRadius: 20,
-                  marginHorizontal: 5,
-                }}
-              >
-                <Text style={{ color: "white" }}>{type}</Text>
-              </TouchableOpacity>
-            )}
+            horizontal
             showsHorizontalScrollIndicator={false}
           />
         </View>
-        <View>
+        <View style={styles.innerContainer}>
           <FlatList
             keyExtractor={(item) => item.id.toString()}
             data={recipeData}

@@ -49,7 +49,6 @@ export const api = createApi({
         },
       }),
       transformResponse: (response: RecipeResponseType) => {
-        console.log(response.content);
         return itemsAdapter.addMany(
           itemsAdapter.getInitialState(),
           response.content
@@ -89,6 +88,17 @@ export const api = createApi({
         },
       }),
     }),
+    postRegister: builder.mutation<void, User>({
+      query: (userInfo) => ({
+        url: "/user/register",
+        method: "POST",
+        body: JSON.stringify(userInfo),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }),
+    }),
+
     postLogin: builder.mutation<LoginResponseType, AuthRequestType>({
       query: ({ email, password }) => ({
         url: "/user/authenticate",
@@ -123,6 +133,7 @@ export const {
   useGetRecipesQuery,
   useGetIngredientsByRecipeIdQuery,
   usePostSurveyResponseMutation,
+  usePostRegisterMutation,
   usePostLoginMutation,
   useGetUserDetailsQuery,
 } = api;

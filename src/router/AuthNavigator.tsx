@@ -1,6 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { LoginScreen } from "../pages";
+import { LoginScreen, SignUpScreen, FormInfo } from "../pages";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +14,8 @@ export default function AuthNavigator() {
       }}
     >
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      <Stack.Screen name="SignUp" component={SignUpScreen} />
+      <Stack.Screen name="FormInfo" component={FormInfo} />
     </Stack.Navigator>
   );
 }

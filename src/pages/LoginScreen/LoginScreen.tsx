@@ -85,8 +85,9 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
       {passwordErrorMessage && (
         <Text style={styles.errorMessage}>{passwordErrorMessage}</Text>
       )}
-
-      <LoginButton text="Login" onPress={handleLoginPress} />
+      <View style={styles.button_container}>
+        <LoginButton text="Login" onPress={handleLoginPress} />
+      </View>
 
       <Pressable onPress={() => navigation.navigate("SignUp")}>
         <Text>Don't have an account? Sign up</Text>

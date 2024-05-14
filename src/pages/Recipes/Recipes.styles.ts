@@ -21,6 +21,9 @@ export default StyleSheet.create({
     padding: 20,
     marginTop: -30,
   },
+  innerContainer: {
+    marginVertical: 10,
+  },
   title: {
     color: "white",
     fontSize: 26,
