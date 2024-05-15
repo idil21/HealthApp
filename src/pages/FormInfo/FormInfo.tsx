@@ -24,8 +24,12 @@ import {
   infoValidationSchema,
 } from "./formInfoHelper";
 
+import { usePostRegisterMutation } from "../../redux/api";
+
 function FormInfo({ navigation, route }) {
   const registerValues = route.params?.registerValues;
+  const [Register, { isLoading, isError }] = usePostRegisterMutation();
+
   let [fontsLoaded] = useFonts({
     Satisfy_400Regular,
   });
@@ -52,6 +56,8 @@ function FormInfo({ navigation, route }) {
                   ...registerValues,
                   ...values,
                 };
+
+                Register(userInfo);
                 console.log(userInfo);
               }}
             >
@@ -103,7 +109,7 @@ function FormInfo({ navigation, route }) {
                     onSelect={(selectedItem) => {
                       setValues({
                         ...values,
-                        healthGoals: selectedItem.title,
+                        healthGoals: selectedItem.value,
                       });
                     }}
                   />
@@ -132,7 +138,7 @@ function FormInfo({ navigation, route }) {
                     onSelect={(selectedItem) => {
                       setValues({
                         ...values,
-                        dietPreferences: selectedItem.title,
+                        dietPreferences: selectedItem.value,
                       });
                     }}
                   />

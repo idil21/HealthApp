@@ -6,14 +6,19 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#fff",
+    padding: 20,
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
+    textAlign: "center",
     marginBottom: 20,
   },
   description: {
-    fontSize: 15,
+    fontSize: 16,
+    textAlign: "center",
+    paddingHorizontal: 30,
+    marginBottom: 40,
   },
   button: {
     borderRadius: 100,
@@ -21,32 +26,18 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
   },
   buttonContainer: {
-    backgroundColor: "#4b0082",
-    borderRadius: 200,
-
-    marginTop: 20,
-    overflow: "hidden",
-    width: 150,
-    height: 150,
-  },
-
-  buttonInnerContainer: {
-    borderRadius: 100,
-    backgroundColor: "#fff",
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    width: 90,
-    height: 90,
-    position: "absolute",
-    top: 30,
-    left: 30,
+    backgroundColor: "#8883F0",
     justifyContent: "center",
     alignItems: "center",
+    width: 120,
+    height: 120,
+    borderRadius: 60,
   },
+
   buttonTitle: {
-    color: "#52006A",
+    color: "white",
+    fontWeight: "bold",
     fontSize: 16,
-    textAlign: "center",
   },
   elevation: {
     //May require extra library for iOS

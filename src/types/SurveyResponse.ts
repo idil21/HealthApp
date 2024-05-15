@@ -3,7 +3,6 @@ export interface SurveyResponse {
   highBP: number;
   highChol: number;
   cholCheck: number;
-  bmi: number;
   smoker: number;
   stroke: number;
   heartDiseaseOrAttack: number;
@@ -17,8 +16,6 @@ export interface SurveyResponse {
   mentHlth: number;
   physHlth: number;
   diffWalk: number;
-  sex: number;
-  age: number;
   education: number;
   income: number;
 }

@@ -1,16 +1,20 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+  errorText: {
+    color: "red",
+    marginTop: 10,
+  },
   container: {
     flex: 1,
     alignItems: "stretch",
-    //justifyContent: 'center',
     backgroundColor: "#fff",
   },
   optionButton: {
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 20,
+    fontSize: 16,
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#ffffff",

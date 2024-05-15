@@ -13,18 +13,21 @@ const SurveyHomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>XXX TEST</Text>
+      <Text style={styles.title}>
+        Health Check: Assess Your Risk for Obesity and Diabetes
+      </Text>
       <Text style={styles.description}>
         {" "}
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Welcome to our health assessment survey! Take a few minutes to answer
+        questions about your daily routines and symptoms. This survey is
+        designed to help you understand your predisposition to obesity and
+        diabetes, empowering you with knowledge to take proactive steps for your
+        health.
       </Text>
 
-      <View style={[styles.buttonContainer, styles.elevation]}>
-        <TouchableOpacity onPress={handleStartSurvey} style={styles.button}>
-          <View style={styles.buttonInnerContainer}>
-            <Text style={styles.buttonTitle}>START</Text>
-          </View>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={handleStartSurvey}>
+          <Text style={styles.buttonTitle}>START</Text>
         </TouchableOpacity>
       </View>
     </View>

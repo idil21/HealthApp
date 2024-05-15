@@ -46,29 +46,6 @@
       ]
     },
     {
-      "question_type": "numeric",
-      "feature": "bmi",
-      "question": "What is your Body Mass Index (BMI)?",
-      "options": [
-        {
-          "text": "Underweight (<18.5)",
-          "value": 16.0
-        },
-        {
-          "text": "Normal Weight (18.5 - 24.9)",
-          "value": 19.0
-        },
-        {
-          "text": "Overweight (25 - 29.9)",
-          "value": 27.0
-        },
-        {
-          "text": "Obese (30+)",
-          "value": 32.0
-        }
-      ]
-    },
-    {
       "question_type": "categorical",
       "feature": "smoker",
       "question": "Have you smoked at least 100 cigarettes in your entire life? (Note: 5 packs = 100 cigarettes)",
@@ -234,55 +211,15 @@
       "question_type": "numeric",
       "feature": "mentHlth",
       "question": "Now thinking about your mental health, which includes stress, depression, and problems with emotions, for how many days during the past 30 days was your mental health not good? (0 ~ 30)",
-      "options": [
-        {
-          "text": "0 days",
-          "value": 0
-        },
-        {
-          "text": "1-5 days",
-          "value": 1
-        },
-        {
-          "text": "6-10 days",
-          "value": 2
-        },
-        {
-          "text": "11-20 days",
-          "value": 3
-        },
-        {
-          "text": "21-30 days",
-          "value": 4
-        }
-      ]
+      "min": 0,
+      "max": 30
     },
     {
       "question_type": "numeric",
       "feature": "physHlth",
       "question": "Now thinking about your physical health, which includes physical illness and injury, for how many days during the past 30 days was your physical health not good? (0 ~ 30)",
-      "options": [
-        {
-          "text": "0 days",
-          "value": 0
-        },
-        {
-          "text": "1-5 days",
-          "value": 1
-        },
-        {
-          "text": "6-10 days",
-          "value": 2
-        },
-        {
-          "text": "11-20 days",
-          "value": 3
-        },
-        {
-          "text": "21-30 days",
-          "value": 4
-        }
-      ]
+      "min": 0,
+      "max": 30
     },
     {
       "question_type": "categorical",
@@ -296,64 +233,6 @@
         {
           "text": "No",
           "value": 0
-        }
-      ]
-    },
-    {
-      "question_type": "categorical",
-      "feature": "sex",
-      "question": "Indicate sex of respondent (0,1) (Female or Male)",
-      "options": [
-        {
-          "text": "Female",
-          "value": 0
-        },
-        {
-          "text": "Male",
-          "value": 1
-        }
-      ]
-    },
-    {
-      "question_type": "categorical",
-      "feature": "age",
-      "question": "Fourteen-level age category (1 ~ 14)",
-      "options": [
-        {
-          "text": "18-24 years",
-          "value": 1
-        },
-        {
-          "text": "25-34 years",
-          "value": 2
-        },
-        {
-          "text": "35-44 years",
-          "value": 3
-        },
-        {
-          "text": "45-54 years",
-          "value": 4
-        },
-        {
-          "text": "55-64 years",
-          "value": 5
-        },
-        {
-          "text": "65-74 years",
-          "value": 6
-        },
-        {
-          "text": "75-84 years",
-          "value": 7
-        },
-        {
-          "text": "85+ years",
-          "value": 8
-        },
-        {
-          "text": "Prefer not to answer",
-          "value": 9
         }
       ]
     },
@@ -390,7 +269,7 @@
     },
     {
       "question_type": "categorical",
-      "feature": "genHlth",
+      "feature": "income",
       "question": "Is your annual household income from all sources: income level (1 ~ 8)",
       "options": [
         {

@@ -7,11 +7,11 @@ export const ActivityLevel = [
 ];
 
 export const DietPreferences = [
-  { title: "Vegetarian", icon: "leaf" },
-  { title: "Vegan", icon: "leaf" },
-  { title: "Gluten-free", icon: "food-off" },
-  { title: "Dairy-free", icon: "cup-off" },
-  { title: "None", icon: "close" },
+  { title: "Vegetarian", value: "VEGETARIAN", icon: "leaf" },
+  { title: "Vegan", value: "VEGAN", icon: "leaf" },
+  { title: "Gluten-free", value: "GLUTEN_FREE", icon: "food-off" },
+  { title: "Dairy-free", value: "DAIRY_FREE", icon: "cup-off" },
+  { title: "None", value: "NONE", icon: "close" },
 ];
 
 export const ExerciseHabits = [
@@ -22,10 +22,10 @@ export const ExerciseHabits = [
 ];
 
 export const HealthGoals = [
-  { title: "Get fit", icon: "dumbbell" },
-  { title: "Be active", icon: "heart" },
-  { title: "Be healthy", icon: "stethoscope" },
-  { title: "Find balance", icon: "meditation" },
+  { title: "Get fit", value: "FIT", icon: "dumbbell" },
+  { title: "Be active", value: "ACTIVE", icon: "heart" },
+  { title: "Be healthy", value: "HEALTHY", icon: "stethoscope" },
+  { title: "Find balance", value: "BALANCE", icon: "meditation" },
 ];
 
 export const Sex = [

@@ -22,10 +22,15 @@ export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: URL,
-    prepareHeaders: async (headers, { getState }) => {
+    prepareHeaders: async (headers, { getState, endpoint }) => {
       const token = await AsyncStorage.getItem("token");
 
-      if (token !== null && token) {
+      if (
+        token !== null &&
+        token &&
+        endpoint !== "postLogin" &&
+        endpoint !== "postRegister"
+      ) {
         headers.set("Authorization", `Bearer ${token}`);
       }
       return headers;
@@ -88,7 +93,7 @@ export const api = createApi({
         },
       }),
     }),
-    postRegister: builder.mutation<void, User>({
+    postRegister: builder.mutation({
       query: (userInfo) => ({
         url: "/user/register",
         method: "POST",
