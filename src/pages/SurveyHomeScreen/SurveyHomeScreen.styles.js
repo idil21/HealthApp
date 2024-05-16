@@ -20,11 +20,6 @@ export default StyleSheet.create({
     paddingHorizontal: 30,
     marginBottom: 40,
   },
-  button: {
-    borderRadius: 100,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-  },
   buttonContainer: {
     backgroundColor: "#8883F0",
     justifyContent: "center",
@@ -38,10 +33,5 @@ export default StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 16,
-  },
-  elevation: {
-    //May require extra library for iOS
-    elevation: 20,
-    shadowColor: "#52006A",
   },
 });
