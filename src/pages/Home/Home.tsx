@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "../../redux/session/slice";
 import ProfileCard from "../../components/ProfileCard";
 import Model from "../../components/Model";
+import styles from "./Home.styles";
 
 function Home({ navigation }) {
   const { data: userInfo, isLoading, isError } = useGetUserDetailsQuery();
@@ -21,7 +22,7 @@ function Home({ navigation }) {
   const todayDate = new Date().toLocaleDateString("tr-TR");
   const celebrationIcon = require("../../../assets/confetti.png");
 
-  const handleSurveyButtonClick = () => {
+  const handleOnSurvey = () => {
     navigation.navigate("SurveyHome");
   };
 
@@ -36,7 +37,7 @@ function Home({ navigation }) {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.profile}>
         <View style={styles.profileSection}>
           <View style={styles.profileContainer}>
@@ -56,81 +57,11 @@ function Home({ navigation }) {
           <ProfileCard targetCalories="2000" currentCalories="1000" />
         </View>
         <View style={styles.modelStyle}>
-          <Model isResolved={true} result="85" navigation={navigation} />
+          <Model isResolved={true} result="85" handlePress={handleOnSurvey} />
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 20,
-    backgroundColor: "white",
-    paddingTop: 60,
-  },
-  profile: {
-    flex: 0.7,
-  },
-  textContainer: {
-    justifyContent: "center",
-    alignItems: "flex-start", // Sol hizalama
-    padding: 12,
-  },
-  cardStyle: {
-    paddingTop: 20,
-  },
-  modelStyle: {
-    paddingTop: 20,
-  },
-  icon: {
-    width: 24,
-    height: 24,
-    marginLeft: 5,
-  },
-  profileSection: {
-    flexDirection: "column",
-    alignItems: "flex-start",
-    justifyContent: "space-around",
-    borderRadius: 20,
-    backgroundColor: "#ffffff",
-    shadowColor: "#000000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 2.54,
-    elevation: 3,
-  },
-  profileContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%",
-  },
-  profilePhoto: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginRight: 10,
-  },
-  greetingText: {
-    fontSize: 20,
-    marginRight: 10,
-    color: "#999", // Gri renk
-    fontWeight: "normal",
-  },
-  usernameText: {
-    fontSize: 24,
-    fontWeight: "bold", // Kalın yazı tipi
-    color: "#000", // Siyah renk
-  },
-  dateText: {
-    fontSize: 12,
-    color: "#999",
-  },
-});
 
 export default Home;

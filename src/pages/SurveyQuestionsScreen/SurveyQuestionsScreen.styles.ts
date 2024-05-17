@@ -25,7 +25,6 @@ export default StyleSheet.create({
     },
     shadowOpacity: 0.3,
     shadowRadius: 2.54,
-    shadowRadius: 10,
     elevation: 3,
     marginBottom: 20,
     width: "90%",
@@ -49,5 +48,16 @@ export default StyleSheet.create({
     marginLeft: 40,
     justifyContent: "center",
     marginTop: 20,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 16,
+    width: "100%",
+    paddingHorizontal: 20,
+  },
+  buttonWrapper: {
+    flex: 1,
+    marginHorizontal: 5,
   },
 });

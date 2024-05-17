@@ -153,7 +153,12 @@ function FormInfo({ navigation, route }) {
                     }}
                   />
 
-                  <SubmitButton text="Submit" onPress={handleSubmit} />
+                  <SubmitButton
+                    text="Submit"
+                    onPress={handleSubmit}
+                    backgroundColor=""
+                    color=""
+                  />
                 </>
               )}
             </Formik>
