@@ -1,9 +1,9 @@
 import * as Yup from "yup";
 
 export const ActivityLevel = [
-  { title: "Low Activity", icon: "play" },
-  { title: "Moderate Activity", icon: "forward" },
-  { title: "High Activity", icon: "fast-forward" },
+  { title: "Low Activity", value: "LOW", icon: "play" },
+  { title: "Moderate Activity", value: "MODERATE", icon: "forward" },
+  { title: "High Activity", value: "HIGH", icon: "fast-forward" },
 ];
 
 export const DietPreferences = [
@@ -25,7 +25,6 @@ export const HealthGoals = [
   { title: "Get fit", value: "FIT", icon: "dumbbell" },
   { title: "Be active", value: "ACTIVE", icon: "heart" },
   { title: "Be healthy", value: "HEALTHY", icon: "stethoscope" },
-  { title: "Find balance", value: "BALANCE", icon: "meditation" },
 ];
 
 export const Sex = [

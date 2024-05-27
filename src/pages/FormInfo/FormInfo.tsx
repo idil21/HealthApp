@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, ErrorMessage } from "formik";
 import {
   TextInput,
@@ -28,11 +28,19 @@ import { usePostRegisterMutation } from "../../redux/api";
 
 function FormInfo({ navigation, route }) {
   const registerValues = route.params?.registerValues;
-  const [Register, { isLoading, isError }] = usePostRegisterMutation();
+  const [Register, { data: registerResponse, isLoading, isError }] =
+    usePostRegisterMutation();
 
   let [fontsLoaded] = useFonts({
     Satisfy_400Regular,
   });
+
+  useEffect(() => {
+    if (registerResponse?.message === "SUCCESS") {
+      navigation.navigate("LoginScreen");
+    }
+  }, [registerResponse, navigation]);
+
   if (!fontsLoaded) {
     return <View></View>;
   } else {
@@ -124,7 +132,7 @@ function FormInfo({ navigation, route }) {
                     onSelect={(selectedItem) => {
                       setValues({
                         ...values,
-                        activityLevel: selectedItem.title,
+                        activityLevel: selectedItem.value,
                       });
                     }}
                   />
@@ -154,7 +162,7 @@ function FormInfo({ navigation, route }) {
                   />
 
                   <SubmitButton
-                    text="Submit"
+                    text="Sign up"
                     onPress={handleSubmit}
                     backgroundColor=""
                     color=""

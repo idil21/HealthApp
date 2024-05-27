@@ -3,17 +3,20 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
     backgroundColor: "white",
-    paddingTop: 60,
   },
   profile: {
-    flex: 0.7,
+    flex: 2,
+    padding: 10,
   },
   textContainer: {
     justifyContent: "center",
     alignItems: "flex-start",
+    marginBottom: 10,
     padding: 12,
+  },
+  profileHeader: {
+    flexDirection: "row",
   },
   cardStyle: {
     paddingTop: 20,
@@ -63,9 +66,18 @@ export default StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold", // Kalın yazı tipi
     color: "#000", // Siyah renk
+    marginTop: 5,
   },
   dateText: {
     fontSize: 12,
     color: "#999",
+  },
+  menuContainer: {
+    flex: 1.5,
+    padding: 20,
+    marginTop: 10,
+  },
+  separator: {
+    height: 10,
   },
 });

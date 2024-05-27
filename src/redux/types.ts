@@ -14,11 +14,21 @@ export interface LoginResponseType {
   message: string;
   result: string;
 }
-
+export interface SurveyResultType {
+  code: number;
+  message: string;
+  result: number;
+}
 export interface UserDetailsResponseType {
   code: number;
   message: string;
   result: User;
+}
+
+export interface DailyMenuResponseType {
+  code: number;
+  message: string;
+  result: Recipe[];
 }
 
 export interface RecipesRequestType {
@@ -30,5 +40,5 @@ export interface RecipesRequestType {
   vegetarian?: boolean;
   dairyFree?: boolean;
   glutenFree?: boolean;
-  dishTypes?: string;
+  dishTypes?: string[];
 }

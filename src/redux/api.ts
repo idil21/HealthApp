@@ -5,10 +5,14 @@ import type {
   LoginResponseType,
   UserDetailsResponseType,
   RecipesRequestType,
+  DailyMenuResponseType,
+  SurveyResultType,
 } from "./types";
 import { Ingredient, SurveyResponse, Recipe, User } from "../types";
 import { EntityState, createEntityAdapter } from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
+type RegisterResponseType = LoginResponseType;
 
 const URL = "http://127.0.0.1:8080";
 
@@ -27,7 +31,6 @@ export const api = createApi({
 
       if (
         token !== null &&
-        token &&
         endpoint !== "postLogin" &&
         endpoint !== "postRegister"
       ) {
@@ -83,6 +86,9 @@ export const api = createApi({
     getIngredientsByRecipeId: builder.query<Ingredient[], number>({
       query: (recipeId) => `/recipeIngredients/${recipeId}`,
     }),
+    getSurveyResult: builder.query<SurveyResultType, number>({
+      query: (userId) => `/surveyResponse/${userId}`,
+    }),
     postSurveyResponse: builder.mutation<void, SurveyResponse>({
       query: (surveyResponse) => ({
         url: "/surveyResponse",
@@ -93,6 +99,19 @@ export const api = createApi({
         },
       }),
     }),
+    postDailyMenu: builder.mutation<Recipe[], User>({
+      query: (userInfo) => ({
+        url: "/menu/daily",
+        method: "POST",
+        body: JSON.stringify(userInfo),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }),
+      transformResponse: (response: DailyMenuResponseType) => {
+        return response.result;
+      },
+    }),
     postRegister: builder.mutation({
       query: (userInfo) => ({
         url: "/user/register",
@@ -102,6 +121,9 @@ export const api = createApi({
           "Content-type": "application/json; charset=UTF-8",
         },
       }),
+      transformResponse: (response: RegisterResponseType) => {
+        return response;
+      },
     }),
 
     postLogin: builder.mutation<LoginResponseType, AuthRequestType>({
@@ -141,6 +163,8 @@ export const {
   usePostRegisterMutation,
   usePostLoginMutation,
   useGetUserDetailsQuery,
+  usePostDailyMenuMutation,
+  useGetSurveyResultQuery,
 } = api;
 
 export { itemsSelector, itemsAdapter };
