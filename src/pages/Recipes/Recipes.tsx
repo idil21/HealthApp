@@ -24,7 +24,7 @@ function Recipes({ navigation }) {
   const [searchParams, setSearchParams] = useState({
     currentPage: 0,
     searchResult: "",
-    dishType: "",
+    dishTypes: [],
   });
   const {
     data: recipeData,
@@ -35,7 +35,7 @@ function Recipes({ navigation }) {
     {
       page: searchParams.currentPage,
       queryText: searchParams.searchResult,
-      dishTypes: searchParams.dishType,
+      dishTypes: searchParams.dishTypes,
     },
     {
       selectFromResult: ({ data, ...otherParams }) => ({
@@ -55,17 +55,23 @@ function Recipes({ navigation }) {
   const renderFilterChip: ListRenderItem<string> = ({ item }) => (
     <FilterChip
       label={item}
-      isSelected={searchParams.dishType == item}
+      isSelected={searchParams.dishTypes.includes(item)}
       onPress={() => handleOnFiltering(item)}
     />
   );
 
   const handleOnSearch = (text) => {
-    setSearchParams({ currentPage: 0, searchResult: text, dishType: "" });
+    setSearchParams({ currentPage: 0, searchResult: text, dishTypes: [] });
   };
 
   const handleOnFiltering = (type) => {
-    setSearchParams({ currentPage: 0, dishType: type, searchResult: "" });
+    setSearchParams((prevParams) => ({
+      ...prevParams,
+      currentPage: 0,
+      dishTypes: prevParams.dishTypes.includes(type)
+        ? prevParams.dishTypes.filter((t) => t !== type)
+        : [...prevParams.dishTypes, type],
+    }));
   };
 
   return (

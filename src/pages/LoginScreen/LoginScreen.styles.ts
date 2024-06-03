@@ -25,6 +25,7 @@ export default StyleSheet.create({
 
   button_container: {
     width: "100%",
+    marginTop: 8,
   },
 
   input: {

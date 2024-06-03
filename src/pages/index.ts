@@ -7,6 +7,7 @@ import SurveyHomeScreen from "./SurveyHomeScreen";
 import SurveyResult from "./SurveyResult";
 import SurveyQuestionsScreen from "./SurveyQuestionsScreen";
 import FormInfo from "./FormInfo";
+import Chat from "./Chat";
 
 export {
   RecipeDetail,
@@ -18,4 +19,5 @@ export {
   SurveyResult,
   SurveyQuestionsScreen,
   FormInfo,
+  Chat,
 };

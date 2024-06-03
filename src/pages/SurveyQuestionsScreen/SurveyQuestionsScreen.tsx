@@ -55,8 +55,15 @@ const SurveyQuestionsScreen = ({ route, navigation }) => {
       actions.resetForm();
     } else {
       const surveyResponse = { userId, ...updatedResponses };
+      console.log(surveyResponse);
       postSurveyResponse(surveyResponse);
       navigation.navigate("SurveyResult");
+    }
+  };
+
+  const handleBack = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
   };
 
@@ -110,7 +117,30 @@ const SurveyQuestionsScreen = ({ route, navigation }) => {
               <View style={styles.optionsContainer}>
                 {renderOptions(setFieldValue, values)}
               </View>
-              <LoginButton text="Next" onPress={handleSubmit} />
+              <View style={styles.buttonContainer}>
+                {currentQuestionIndex > 0 && (
+                  <View style={styles.buttonWrapper}>
+                    <LoginButton
+                      text="Back"
+                      onPress={handleBack}
+                      backgroundColor="#F2F2F2"
+                      color="#9D9D9D"
+                    />
+                  </View>
+                )}
+                <View style={styles.buttonWrapper}>
+                  <LoginButton
+                    text={
+                      currentQuestionIndex === surveyQuestions.length - 1
+                        ? "Finish"
+                        : "Next"
+                    }
+                    onPress={handleSubmit}
+                    backgroundColor=""
+                    color=""
+                  />
+                </View>
+              </View>
             </>
           )}
         </Formik>

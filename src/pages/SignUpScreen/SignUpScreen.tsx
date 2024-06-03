@@ -56,7 +56,12 @@ const SignUpScreen = ({ navigation }) => {
                 onChangeText={handleChange("password")}
               />
 
-              <NextButton text="Next" onPress={handleSubmit} />
+              <NextButton
+                text="Next"
+                onPress={handleSubmit}
+                backgroundColor=""
+                color=""
+              />
             </>
           )}
         </Formik>

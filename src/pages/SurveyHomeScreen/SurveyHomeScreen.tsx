@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import SurveyQuestionsScreen from "../SurveyQuestionsScreen/SurveyQuestionsScreen";
 import questionJson from "../../questions.json";
 import styles from "./SurveyHomeScreen.styles";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const SurveyHomeScreen = ({ navigation }) => {
   const handleStartSurvey = () => {
@@ -12,7 +13,7 @@ const SurveyHomeScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.title}>
         Health Check: Assess Your Risk for Obesity and Diabetes
       </Text>
@@ -30,7 +31,7 @@ const SurveyHomeScreen = ({ navigation }) => {
           <Text style={styles.buttonTitle}>START</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
