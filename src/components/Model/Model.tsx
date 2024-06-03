@@ -1,22 +1,52 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import styles from "./Model.styles";
-const Model = ({ isResolved, result, handlePress }) => {
+
+const Model = ({ isResolved, result, handlePress, type }) => {
+  const resolvedTexts = {
+    obesity: "Obesity Risk",
+    diabetes: "Diabetes Risk",
+  };
+
+  const unresolvedTexts = {
+    obesity: "Check Obesity Risk",
+    diabetes: "Check Diabetes Risk",
+  };
+
+  const getObesityCategory = (result) => {
+    switch (result) {
+      case 1:
+        return "Insufficient Weight";
+      case 2:
+        return "Healthy Weight";
+      case 3:
+        return "Slightly Overweight";
+      case 4:
+        return "Obese";
+      default:
+        return "Unknown";
+    }
+  };
+
   return (
     <TouchableOpacity style={styles.card} onPress={handlePress}>
       {isResolved ? (
         <>
-          <Text style={styles.title}>Your Obesity Risk Prediction</Text>
-          <Text style={styles.result}>Prediction Accuracy: {result}%</Text>
+          <Text style={styles.title}>{resolvedTexts[type]}</Text>
+          {type === "diabetes" ? (
+            <Text style={styles.result}>
+              Prediction: {result === 1 ? "High" : "Low"}
+            </Text>
+          ) : (
+            <Text style={styles.result}>
+              Category: {getObesityCategory(result)}
+            </Text>
+          )}
         </>
       ) : (
         <>
-          <Text style={styles.title}>Discover Your Obesity Predisposition</Text>
-          <Text style={styles.body}>
-            • Understand your genetic risk for obesity to make informed
-            decisions about your health and lifestyle.
-          </Text>
-          <Text style={styles.body}>• Tap here to get started.</Text>
+          <Text style={styles.title}>{unresolvedTexts[type]}</Text>
+          <Text style={styles.body}>Tap to start</Text>
         </>
       )}
     </TouchableOpacity>

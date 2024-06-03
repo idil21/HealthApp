@@ -96,11 +96,18 @@ function Home({ navigation }) {
             bmi={userInfo.bmi}
           />
         </View>
-        <View style={styles.modelStyle}>
+        <View style={styles.modelContainer}>
           <Model
             isResolved={true}
-            result={surveyResult?.result || ""}
+            result={surveyResult?.result.obesity ?? ""}
             handlePress={handleOnSurvey}
+            type="obesity"
+          />
+          <Model
+            isResolved={true}
+            result={surveyResult?.result.diabetes ?? ""}
+            handlePress={handleOnSurvey}
+            type="diabetes"
           />
         </View>
       </View>
@@ -112,7 +119,7 @@ function Home({ navigation }) {
           showsVerticalScrollIndicator={false}
           ItemSeparatorComponent={() => <View style={styles.separator} />}
           ListHeaderComponent={() => (
-            <Text style={styles.usernameText}>Recommended Recipes for You</Text>
+            <Text style={styles.menuTitle}>Recommended Recipes for You</Text>
           )}
         />
       </View>

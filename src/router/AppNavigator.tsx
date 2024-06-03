@@ -7,12 +7,11 @@ import Icon from "@expo/vector-icons/Ionicons";
 import {
   Recipes,
   RecipeDetail,
-  SignUpScreen,
+  Chat,
   Home,
   SurveyHomeScreen,
   SurveyQuestionsScreen,
   SurveyResult,
-  FormInfo,
 } from "../pages";
 import { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
@@ -30,6 +29,8 @@ const HomeTabs = () => {
             iconName = focused ? "home" : "home-outline";
           } else if (route.name === "Discover") {
             iconName = focused ? "grid" : "grid-outline";
+          } else if (route.name === "Chat") {
+            iconName = focused ? "chatbubbles" : "chatbubbles-outline";
           }
           return <Icon name={iconName} size={size} color={color} />;
         },
@@ -39,6 +40,7 @@ const HomeTabs = () => {
     >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Discover" component={RecipeStack} />
+      <Tab.Screen name="Chat" component={Chat} />
     </Tab.Navigator>
   );
 };

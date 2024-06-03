@@ -17,7 +17,10 @@ export interface LoginResponseType {
 export interface SurveyResultType {
   code: number;
   message: string;
-  result: number;
+  result: {
+    diabetes: number;
+    obesity: number;
+  };
 }
 export interface UserDetailsResponseType {
   code: number;

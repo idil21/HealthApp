@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#F6F5F5",
   },
   profile: {
     flex: 2,
@@ -21,7 +21,8 @@ export default StyleSheet.create({
   cardStyle: {
     paddingTop: 20,
   },
-  modelStyle: {
+  modelContainer: {
+    flexDirection: "row",
     paddingTop: 20,
   },
   icon: {
@@ -64,8 +65,8 @@ export default StyleSheet.create({
   },
   usernameText: {
     fontSize: 24,
-    fontWeight: "bold", // Kalın yazı tipi
-    color: "#000", // Siyah renk
+    fontWeight: "bold",
+    color: "#000",
     marginTop: 5,
   },
   dateText: {
@@ -75,7 +76,12 @@ export default StyleSheet.create({
   menuContainer: {
     flex: 1.5,
     padding: 20,
-    marginTop: 10,
+    marginTop: 12,
+  },
+  menuTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginVertical: 16,
   },
   separator: {
     height: 10,
