@@ -12,6 +12,7 @@ import {
   SurveyHomeScreen,
   SurveyQuestionsScreen,
   SurveyResult,
+  DailyNutrition,
 } from "../pages";
 import { RootState } from "../redux/store";
 import { useSelector } from "react-redux";
@@ -40,6 +41,7 @@ const HomeTabs = () => {
     >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Discover" component={RecipeStack} />
+      <Tab.Screen name="Daily" component={DailyNutrition} />
       <Tab.Screen name="Chat" component={Chat} />
     </Tab.Navigator>
   );

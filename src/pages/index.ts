@@ -8,6 +8,7 @@ import SurveyResult from "./SurveyResult";
 import SurveyQuestionsScreen from "./SurveyQuestionsScreen";
 import FormInfo from "./FormInfo";
 import Chat from "./Chat";
+import DailyNutrition from "./DailyNutrition";
 
 export {
   RecipeDetail,
@@ -20,4 +21,5 @@ export {
   SurveyQuestionsScreen,
   FormInfo,
   Chat,
+  DailyNutrition,
 };

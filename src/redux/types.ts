@@ -28,6 +28,11 @@ export interface UserDetailsResponseType {
   result: User;
 }
 
+export interface currentMenuRequestType {
+  userId: number;
+  date: string;
+}
+
 export interface DailyMenuResponseType {
   code: number;
   message: string;

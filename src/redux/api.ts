@@ -7,6 +7,7 @@ import type {
   RecipesRequestType,
   DailyMenuResponseType,
   SurveyResultType,
+  currentMenuRequestType,
 } from "./types";
 import { Ingredient, SurveyResponse, Recipe, User } from "../types";
 import { EntityState, createEntityAdapter } from "@reduxjs/toolkit";
@@ -89,6 +90,14 @@ export const api = createApi({
     getSurveyResult: builder.query<SurveyResultType, number>({
       query: (userId) => `/surveyResponse/${userId}`,
     }),
+    getCurrentMenu: builder.query<Recipe[], currentMenuRequestType>({
+      query: ({ userId, date }) => `/current/${userId}/${date}`,
+      transformResponse: (response: DailyMenuResponseType) => {
+        console.log(response.result);
+        return response.result;
+      },
+    }),
+
     postSurveyResponse: builder.mutation<void, SurveyResponse>({
       query: (surveyResponse) => ({
         url: "/surveyResponse",
@@ -110,6 +119,20 @@ export const api = createApi({
       }),
       transformResponse: (response: DailyMenuResponseType) => {
         return response.result;
+      },
+    }),
+    postAddFoodToMenu: builder.mutation({
+      query: (dailyMenu) => ({
+        url: "/menu/add",
+        method: "POST",
+        body: JSON.stringify(dailyMenu),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }),
+      transformResponse: (response) => {
+        console.log(response);
+        return response;
       },
     }),
     postRegister: builder.mutation({
@@ -165,6 +188,8 @@ export const {
   useGetUserDetailsQuery,
   usePostDailyMenuMutation,
   useGetSurveyResultQuery,
+  usePostAddFoodToMenuMutation,
+  useGetCurrentMenuQuery,
 } = api;
 
 export { itemsSelector, itemsAdapter };
