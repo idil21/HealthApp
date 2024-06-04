@@ -6,7 +6,10 @@ import { AnimatedCircularProgress } from "react-native-circular-progress";
 import CustomProgressBar from "../CustomProgressBar";
 import { number } from "yup";
 const ProfileCard = ({ bmi, targetCalories, currentCalories }) => {
-  const fillPercentage = (currentCalories / targetCalories) * 100;
+  const fillPercentage = Math.min(
+    (currentCalories / targetCalories) * 100,
+    100
+  );
   return (
     <View style={styles.container}>
       <View style={styles.profileSection}>
@@ -34,7 +37,7 @@ const ProfileCard = ({ bmi, targetCalories, currentCalories }) => {
           >
             {() => (
               <Text style={styles.circlePercentage}>
-                {fillPercentage.toFixed(1)}%
+                {fillPercentage.toFixed(0)}%
               </Text>
             )}
           </AnimatedCircularProgress>

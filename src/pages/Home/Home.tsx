@@ -54,6 +54,17 @@ function Home({ navigation }) {
       }}
     />
   );
+
+  const isSurveyResolved = (type) => {
+    if (type === "obesity") {
+      return surveyResult?.result?.obesity != null;
+    }
+    if (type === "diabetes") {
+      return surveyResult?.result?.diabetes != null;
+    }
+    return false;
+  };
+
   const getDailyMenu = useCallback(() => {
     if (userInfo) {
       dispatch(setCredentials(userInfo));
@@ -102,13 +113,13 @@ function Home({ navigation }) {
         </View>
         <View style={styles.modelContainer}>
           <Model
-            isResolved={true}
+            isResolved={isSurveyResolved("obesity")}
             result={surveyResult?.result.obesity ?? ""}
             handlePress={handleOnSurvey}
             type="obesity"
           />
           <Model
-            isResolved={true}
+            isResolved={isSurveyResolved("diabetes")}
             result={surveyResult?.result.diabetes ?? ""}
             handlePress={handleOnSurvey}
             type="diabetes"
