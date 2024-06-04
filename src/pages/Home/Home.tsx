@@ -13,12 +13,13 @@ import {
   useGetSurveyResultQuery,
 } from "../../redux/api";
 import type { AppDispatch } from "../../redux/store";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../../redux/session/slice";
 import ProfileCard from "../../components/ProfileCard";
 import Model from "../../components/Model";
 import styles from "./Home.styles";
 import { useFocusEffect } from "@react-navigation/native";
+import { RootState } from "../../redux/store";
 
 import { RecipeCard } from "../../components";
 import { Recipe } from "../../types";
@@ -33,9 +34,12 @@ function Home({ navigation }) {
     isError: isSurveyError,
     refetch,
   } = useGetSurveyResultQuery(userInfo?.id);
+  const todayDate = new Date().toISOString().split("T")[0];
+  const totalCalories = useSelector<RootState, number>(
+    (state) => state.menu.totalCalories[todayDate] || 0
+  );
 
   const profilePhoto = require("../../../assets/default-profile.jpg");
-  const todayDate = new Date().toLocaleDateString("tr-TR");
   const celebrationIcon = require("../../../assets/confetti.png");
 
   const handleOnSurvey = () => {
@@ -92,7 +96,7 @@ function Home({ navigation }) {
         <View style={styles.cardStyle}>
           <ProfileCard
             targetCalories={userInfo.totalCalories}
-            currentCalories="1000"
+            currentCalories={totalCalories}
             bmi={userInfo.bmi}
           />
         </View>

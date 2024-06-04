@@ -32,6 +32,8 @@ const HomeTabs = () => {
             iconName = focused ? "grid" : "grid-outline";
           } else if (route.name === "Chat") {
             iconName = focused ? "chatbubbles" : "chatbubbles-outline";
+          } else if (route.name === "Daily") {
+            iconName = focused ? "calendar" : "calendar-outline";
           }
           return <Icon name={iconName} size={size} color={color} />;
         },

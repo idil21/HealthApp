@@ -91,9 +91,8 @@ export const api = createApi({
       query: (userId) => `/surveyResponse/${userId}`,
     }),
     getCurrentMenu: builder.query<Recipe[], currentMenuRequestType>({
-      query: ({ userId, date }) => `/current/${userId}/${date}`,
+      query: ({ userId, date }) => `/menu/current/${userId}/${date}`,
       transformResponse: (response: DailyMenuResponseType) => {
-        console.log(response.result);
         return response.result;
       },
     }),
